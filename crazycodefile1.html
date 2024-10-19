@@ -9,10 +9,19 @@
 </head>
 
 <body>
+
+
+
+
     <header>
         <h1>Mentorship Booking System</h1>
     </header>
     <main>
+        <div class="position-for-ancher">
+            <a class="ancher-book" href="#bookings">Your Booked List</a>
+            <a class="ancher-book" href="#notification-and-chat">Remainder / Chat box</a>
+        </div>
+        
         <section id="faculty-profiles">
             <h2>Faculty Profiles</h2>
             <div class="profile" data-name="Dr. Smith" data-expertise="AI, Machine Learning" data-guidance="Career Advice, Project Guidance">
@@ -20,6 +29,7 @@
                 <p>Expertise: AI, Machine Learning</p>
                 <p>Guidance Offered: Career Advice, Project Guidance</p>
                 <button class="button-style-check" onclick="showAvailability('Dr. Smith')">Check Availability</button>
+                <a class="ancher-book" href="#bookings">View Your Booked List</a>
                 <div class="availability" id="Dr. Smith-availability" style="display: none;">
                     <h4>Available Slots:</h4>
                     <ul>
@@ -35,6 +45,7 @@
                 <p> Gxpertise: "Data Science, Big Data"</p>
                 <p>Guidance: "Thesis Advice, Research Guidance"</p>
                 <button class="button-style-check" onclick="showAvailability('Dr. Johnson')">Check Availability</button>
+                <a class="ancher-book" href="#bookings">View Your Booked List</a>
                 <div class="availability" id="Dr. Johnson-availability" style="display: none;">
                     <h4>Available Slots:</h4>
                     <ul>
@@ -50,6 +61,7 @@
                 <p> expertise: "Cybersecurity, Cryptography"</p>
                 <p>guidance: "Project Guidance, Career Advice"</p>
                 <button class="button-style-check" onclick="showAvailability('Dr. Williams')">Check Availability</button>
+                <a class="ancher-book" href="#bookings">View Your Booked List</a>
                 <div class="availability" id="Dr. Williams-availability" style="display: none;">
                     <h4>Available Slots:</h4>
                     <ul>
@@ -65,6 +77,7 @@
                 <p>expertise: "Cloud Computing, Distributed Systems"</p>
                 <p>guidance: "Project Guidance"</p>
                 <button class="button-style-check" onclick="showAvailability('Dr. Brown')">Check Availability</button>
+                <a class="ancher-book" href="#bookings">View Your Booked List</a>
                 <div class="availability" id="Dr. Brown-availability" style="display: none;">
                     <h4>Available Slots:</h4>
                     <ul>
@@ -80,6 +93,7 @@
                 <p>expertise: "Natural Language Processing"</p>
                 <p>guidance: "Research Guidance",</p>
                 <button class="button-style-check" onclick="showAvailability('Dr. Anderson')">Check Availability</button>
+                <a class="ancher-book" href="#bookings">View Your Booked List</a>
                 <div class="availability" id="Dr. Anderson-availability" style="display: none;">
                     <h4>Available Slots:</h4>
                     <ul>
@@ -95,6 +109,7 @@
                 <p>expertise: "Embedded Systems, IoT"</p>
                 <p>guidance: "Project Guidance"</p>
                 <button class="button-style-check" onclick="showAvailability('Dr. Moore')">Check Availability</button>
+                <a class="ancher-book" href="#bookings">View Your Booked List</a>
                 <div class="availability" id="Dr. Moore-availability" style="display: none;">
                     <h4>Available Slots:</h4>
                     <ul>
@@ -110,6 +125,7 @@
                 <p>expertise: "Bioinformatics, Computational Biology"</p>
                 <p>guidance: "Thesis Advice"</p>
                 <button class="button-style-check" onclick="showAvailability('guidance: Dr. Harris')">Check Availability</button>
+                <a class="ancher-book" href="#bookings">View Your Booked List</a>
                 <div class="availability" id="guidance: Dr. Harris-availability" style="display: none;">
                     <h4>Available Slots:</h4>
                     <ul>
@@ -119,12 +135,39 @@
                     </ul>
                 </div>
             </div>
-             <section id="bookings">
-            <h2>Your Bookings</h2>
-            <ul id="booking-list" class="listof-book"></ul>
+
         </section>
+        <section id="bookings">
+            <h2>Your Bookings</h2>
+            <ul id="booking-list" class="listof-book check-list"></ul>
         </section>
     </main>
+
+<div class="body2" id="notification-and-chat">
+    <h1 class="head-2">Notification and Chat System</h1>
+    <div class="notification-section">
+        <h2>Schedule Reminder</h2>
+        <label for="session-time">Select session time:</label>
+        <input type="datetime-local" id="session-time"> <br>
+        <button class="button-style-check" onclick="setReminder()">Set Reminder</button>
+        <p id="reminder-message"></p>
+    </div>
+    <div class="chat-section">
+        <h2>Chat</h2>
+        <div id="chat-box">
+            <div id="chat-messages"> </div>
+            <div class="flex-dow-for-chat"> <button class="button-style-check-2-remove" onclick="clearChat()">Clear Chat</button></div>
+            
+        </div>
+        <input type="text" id="chat-input" placeholder="Type your message here...">
+        <button class="button-style-check" onclick="sendMessage()">Send</button>
+        
+    </div>
+</div>
+    
+
+
+
     <footer>
         <p style="text-align: center;">© 2024 Mentorship Booking System</p>
     </footer>
