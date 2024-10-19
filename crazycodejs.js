@@ -91,3 +91,70 @@ function sendEmailToMentor(mentor, time) {
     console.log(emailContent);
     alert(`Email sent to ${mentor}: ${emailContent}`);
 }
+
+window.onload = function() {
+    loadChatMessages();
+};
+
+function setReminder() {
+    const sessionTime = document.getElementById('session-time').value;
+    const reminderMessage = document.getElementById('reminder-message');
+
+    if (sessionTime) {
+        const sessionDate = new Date(sessionTime);
+        const now = new Date();
+        const timeDifference = sessionDate - now;
+
+        if (timeDifference > 0) {
+            reminderMessage.textContent = 'Reminder set for ' + sessionTime;
+            setTimeout(() => {
+                alert('Reminder: You have a session scheduled now!');
+            }, timeDifference);
+        } else {
+            alert('Please select a future time.');
+            reminderMessage.textContent = 'Please select a future time.';
+        }
+    } else {
+        alert('Please select a time for the session.');
+        reminderMessage.textContent = 'Please select a time for the session.';
+    }
+}
+
+function sendMessage() {
+    const chatInput = document.getElementById('chat-input');
+    const chatMessages = document.getElementById('chat-messages');
+
+    if (chatInput.value.trim()) {
+        const messageDiv = document.createElement('div');
+        messageDiv.classList.add('message');
+        messageDiv.textContent = chatInput.value;
+        chatMessages.appendChild(messageDiv);
+        saveMessageToLocalStorage(chatInput.value);
+        chatInput.value = '';
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+}
+
+function saveMessageToLocalStorage(message) {
+    let messages = JSON.parse(localStorage.getItem('chatMessages')) || [];
+    messages.push(message);
+    localStorage.setItem('chatMessages', JSON.stringify(messages));
+}
+
+function loadChatMessages() {
+    const chatMessages = document.getElementById('chat-messages');
+    let messages = JSON.parse(localStorage.getItem('chatMessages')) || [];
+    messages.forEach((message) => {
+        const messageDiv = document.createElement('div');
+        messageDiv.classList.add('message');
+        messageDiv.textContent = message;
+        chatMessages.appendChild(messageDiv);
+    });
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+function clearChat() {
+    const chatMessages = document.getElementById('chat-messages');
+    chatMessages.innerHTML = '';
+    localStorage.removeItem('chatMessages');
+}
